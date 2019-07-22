@@ -9,7 +9,6 @@ import org.spring.springboot.domain.City;
 import org.spring.springboot.domain.RtcClinetLog;
 import org.spring.springboot.service.CityService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.io.File;
@@ -73,7 +72,8 @@ public class CityRestController {
 
             logger.debug(jsonString);
 
-            String path = "D:\\temp\\appendFile.txt";
+//            String path = "D:\\temp\\appendFile.txt"; // windows
+            String path = "/home/urtc/data/appendFile.log"; // linux
             File file = new File(path);
             Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND).write(jsonString + "\n");
 
