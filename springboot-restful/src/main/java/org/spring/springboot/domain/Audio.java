@@ -5,19 +5,19 @@ package org.spring.springboot.domain;
  */
 public class Audio {
 
-    private String streamid; ///: string,
+//    private String streamid; ///: string,
     private Integer br; ///:  int bps,
     private Integer lostpre; ///: int  0 – 100,
     private Integer vol; ///: 0 – 100,
     private String mime; ///:string "opus"  " vp8"  " h264"
 
-    public String getStreamid() {
-        return streamid;
-    }
-
-    public void setStreamid(String streamid) {
-        this.streamid = streamid;
-    }
+//    public String getStreamid() {
+//        return streamid;
+//    }
+//
+//    public void setStreamid(String streamid) {
+//        this.streamid = streamid;
+//    }
 
     public Integer getBr() {
         return br;

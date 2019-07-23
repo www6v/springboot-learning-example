@@ -14,6 +14,7 @@ public class RtcClinetLog {
     private String sid; ///: string,
     private String uid;  ///: string
 
+    private String streamid; ///: string,
 
    private Data data;
 
@@ -112,6 +113,14 @@ public class RtcClinetLog {
 
     public void setData(Data data) {
         this.data = data;
+    }
+
+    public String getStreamid() {
+        return streamid;
+    }
+
+    public void setStreamid(String streamid) {
+        this.streamid = streamid;
     }
 }
 

@@ -1,4 +1,4 @@
-package org.spring.springboot.domain;
+package org.spring.springboot.domain1;
 
 /**
  * 城市实体类

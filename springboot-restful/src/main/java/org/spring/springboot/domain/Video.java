@@ -5,20 +5,22 @@ package org.spring.springboot.domain;
  */
 public class Video {
 
-    private String streamid; ///: string,
+//    private String streamid; ///: string,
     private Integer br; ///:  int bps,
     private Integer lostpre; ///: int  0 – 100,
     private Integer frt; ///: int
     private Integer w; ///: int
     private Integer h; ///: int
 
-    public String getStreamid() {
-        return streamid;
-    }
+    private String mime; /// :string "vp8"  "vp9" "h264"
 
-    public void setStreamid(String streamid) {
-        this.streamid = streamid;
-    }
+//    public String getStreamid() {
+//        return streamid;
+//    }
+//
+//    public void setStreamid(String streamid) {
+//        this.streamid = streamid;
+//    }
 
     public Integer getBr() {
         return br;
@@ -58,6 +60,14 @@ public class Video {
 
     public void setH(Integer h) {
         this.h = h;
+    }
+
+    public String getMime() {
+        return mime;
+    }
+
+    public void setMime(String mime) {
+        this.mime = mime;
     }
 }
 

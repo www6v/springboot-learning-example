@@ -5,7 +5,7 @@ import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spring.springboot.domain.City;
+import org.spring.springboot.domain1.City;
 //import org.spring.springboot.domain1.RtcClinetLog;
 import org.spring.springboot.domain.RtcClinetLog;
 
@@ -62,13 +62,6 @@ public class CityRestController {
     @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
     public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
         try {
-//            System.out.println(rtcClinetLog.getMethod());
-//            System.out.println(rtcClinetLog.getRpc_id());
-//            System.out.println(rtcClinetLog.getVersion());
-//
-//            System.out.println(rtcClinetLog.getData().getType());
-//            System.out.println(rtcClinetLog.getData().getAid());
-
             String jsonString = JSON.toJSONString(rtcClinetLog, SerializerFeature.PrettyFormat,
                     SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.UseSingleQuotes);
 
