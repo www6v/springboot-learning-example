@@ -5,7 +5,7 @@ import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.spring.springboot.domain1.City;
+import org.spring.springboot.domain.City;
 //import org.spring.springboot.domain1.RtcClinetLog;
 import org.spring.springboot.domain.RtcClinetLog;
 
