@@ -62,8 +62,10 @@ public class CityRestController {
     @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
     public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
         try {
-            String jsonString = JSON.toJSONString(rtcClinetLog, SerializerFeature.PrettyFormat,
+            String jsonString = JSON.toJSONString(rtcClinetLog,
                     SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.UseSingleQuotes);
+
+//            SerializerFeature.PrettyFormat,
 
             logger.debug(jsonString);
 
