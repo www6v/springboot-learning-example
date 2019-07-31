@@ -63,8 +63,8 @@ public class CityRestController {
     public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
         try {
             String jsonString = JSON.toJSONString(rtcClinetLog,
-                    SerializerFeature.WriteNullStringAsEmpty, SerializerFeature.UseSingleQuotes);
-
+                    SerializerFeature.WriteNullStringAsEmpty);
+//            SerializerFeature.UseSingleQuotes
 //            SerializerFeature.PrettyFormat,
 
             logger.debug(jsonString);
