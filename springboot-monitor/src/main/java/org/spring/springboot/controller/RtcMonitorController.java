@@ -24,6 +24,7 @@ public class RtcMonitorController {
 //        return cityService.findCityById(id);
 //    }
 
+    @ResponseBody
     @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
     public RoomStatus findRoomStatus(@PathVariable("roomId") String roomId) {
         return roomStatusService.findRoomStatusById(roomId);
