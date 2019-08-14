@@ -4,12 +4,12 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>springboot</groupId>
-    <artifactId>springboot-restful</artifactId>
+    <artifactId>springboot-monitor</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <!-- -->
     <packaging>jar</packaging>
 
-    <name>springboot-restful</name>
+    <name>springboot-monitor</name>
 
     <!-- Spring Boot 启动父依赖 -->
     <parent>
