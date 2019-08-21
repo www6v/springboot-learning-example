@@ -3,26 +3,24 @@ package org.spring.springboot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.springboot.domain.RoomStatus;
+import org.spring.springboot.domain.UserInfo;
 import org.spring.springboot.service.RoomStatusService;
+import org.spring.springboot.service.RoomUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-//import org.spring.springboot.domain1.RtcClinetLog;
+import java.util.*;
 
 @RestController
 public class RtcMonitorController {
 
     Logger logger=  LoggerFactory.getLogger(RtcMonitorController.class);
 
-//    @Autowired
-//    private CityService cityService;
     @Autowired
     private RoomStatusService roomStatusService;
+    @Autowired
+    private RoomUserService roomUserService;
 
-//    @RequestMapping(value = "/api/city/{id}", method = RequestMethod.GET)
-//    public City findOneCity(@PathVariable("id") Long id) {
-//        return cityService.findCityById(id);
-//    }
 
     @ResponseBody
     @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
@@ -30,21 +28,28 @@ public class RtcMonitorController {
         return roomStatusService.findRoomStatusById(roomId);
     }
 
+    @ResponseBody
+    @RequestMapping(value = "/api/roomUsers/{roomId}", method = RequestMethod.GET)
+    public Map<String, List<UserInfo>> findRoomUsers(@PathVariable("roomId") String roomId) {
+        HashMap<String, List<UserInfo>> userMap = new HashMap<>();
+        List<UserInfo> roomUsersList = roomUserService.findRoomUsersById(roomId);
 
-//    @ResponseBody
-//    @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
-//    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
-//        try {
-//            String jsonString = JSON.toJSONString(rtcClinetLog,
-//                    SerializerFeature.WriteNullStringAsEmpty);
-////            String path = "D:\\temp\\appendFile.txt"; // windows
-//            String path = "/home/urtc/data/appendFile.log"; // linux
-//            File file = new File(path);
-//            Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND).write(jsonString + "\n");
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//
-//        return rtcClinetLog;
-//    }
+        Iterator<UserInfo> iterator = roomUsersList.iterator();
+        while(iterator.hasNext()) {
+            UserInfo user = iterator.next();
+            String concurentUserId = user.getUserId();
+
+            List<UserInfo> userInfosList = userMap.get(concurentUserId);
+            if(userInfosList == null) {
+                userInfosList = new ArrayList<>();
+                userInfosList.add(user);
+            }
+            else {
+                userInfosList.add(user);
+            }
+            userMap.put(concurentUserId, userInfosList);
+        }
+
+        return userMap;
+    }
 }

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="org.spring.springboot.dao.RoomUserDao">
+	<resultMap id="BaseResultMap" type="org.spring.springboot.domain.UserInfo">
+		<result column="user_id" property="userId" />
+		<result column="room_id" property="roomId" />
+		<result column="status_type" property="statusType" />
+		<result column="time" property="time" />
+		<result column="sdkv" property="sdkv" />
+		<result column="agent" property="agent" />
+		<result column="device" property="device" />
+		<result column="system" property="system" />
+		<result column="network" property="network" />
+		<result column="cpu" property="cpu" />
+		<result column="mem" property="mem" />
+	</resultMap>
+
+	<sql id="Base_Column_List">
+		room_id, user_id, status_type, time, sdkv, agent, device,  system, network, cpu, mem
+	</sql>
+
+
+	<select id="findRoomUserById" resultMap="BaseResultMap" parameterType="java.lang.String">
+		select
+		<include refid="Base_Column_List" />
+		from user_info
+		where room_id = #{roomId}
+	</select>
+</mapper>
