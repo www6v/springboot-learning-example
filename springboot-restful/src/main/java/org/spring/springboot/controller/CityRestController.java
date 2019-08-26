@@ -60,14 +60,18 @@ public class CityRestController {
 
     @ResponseBody
     @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
-    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
+//    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
+    public String createRtcClinetLog(@RequestBody String rtcClinetLog) {
+
         try {
-            String jsonString = JSON.toJSONString(rtcClinetLog,
-                    SerializerFeature.WriteNullStringAsEmpty);
+            String jsonString = rtcClinetLog;
+
+//            String jsonString = JSON.toJSONString(rtcClinetLog,
+//                    SerializerFeature.WriteNullStringAsEmpty);
 //            SerializerFeature.UseSingleQuotes
 //            SerializerFeature.PrettyFormat,
 
-            logger.debug(jsonString);
+//            logger.debug(jsonString);
 
 //            String path = "D:\\temp\\appendFile.txt"; // windows
             String path = "/home/urtc/data/appendFile.log"; // linux
