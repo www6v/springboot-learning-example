@@ -128,14 +128,6 @@
 
 
     <build>
-        <resources>
-            <resource>
-                <!-- 防止JKS被maven错误解析 -->
-                <directory>src/main/resources</directory>
-                <filtering>false</filtering>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>
@@ -204,7 +196,65 @@
                 </executions>
             </plugin>
         </plugins>
+
+
+        <!--<resources>-->
+            <!--<resource>-->
+                <!--&lt;!&ndash; 防止JKS被maven错误解析 &ndash;&gt;-->
+                <!--<directory>src/main/resources</directory>-->
+                <!--<filtering>false</filtering>-->
+            <!--</resource>-->
+        <!--</resources>-->
+
+        <!-- profile -->
+        <resources>
+
+            <resource>
+                <!-- 防止JKS被maven错误解析 -->
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+            </resource>
+
+
+            <resource>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>*.xml</include>
+                </includes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <excludes>
+                    <exclude>pre/*</exclude>
+                    <exclude>prd/*</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources/${env}</directory>
+            </resource>
+        </resources>
     </build>
+
+
+    <!-- profile -->
+    <profiles>
+        <profile>
+            <id>pre</id>
+            <properties>
+                <env>pre</env>
+            </properties>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <profile>
+            <id>prd</id>
+            <properties>
+                <env>prd</env>
+            </properties>
+        </profile>
+    </profiles>
 
     <!--<build>-->
         <!--<plugins>-->
