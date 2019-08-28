@@ -53,10 +53,6 @@ public class RtcMonitorController {
         return userMap;
     }
 
-
-//    @ResponseBody
-//    @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
-
     @PostMapping("/api/roomsStatus")
     public List<RoomStatus> findStatusOfRooms(@RequestBody List<String> roomIds) {
 
@@ -70,6 +66,5 @@ public class RtcMonitorController {
         }
 
         return roomStatusList;
-//        return roomStatusService.findRoomStatusById(roomId);
     }
 }
