@@ -52,4 +52,24 @@ public class RtcMonitorController {
 
         return userMap;
     }
+
+
+//    @ResponseBody
+//    @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
+
+    @PostMapping("/api/roomsStatus")
+    public List<RoomStatus> findStatusOfRooms(@RequestBody List<String> roomIds) {
+
+        List<RoomStatus> roomStatusList = new ArrayList<>();
+
+        for(int i =0; i< roomIds.size(); i++) {
+            String rid = roomIds.get(i);
+            RoomStatus roomStatus = roomStatusService.findRoomStatusById(rid);
+
+            roomStatusList.add(roomStatus);
+        }
+
+        return roomStatusList;
+//        return roomStatusService.findRoomStatusById(roomId);
+    }
 }
