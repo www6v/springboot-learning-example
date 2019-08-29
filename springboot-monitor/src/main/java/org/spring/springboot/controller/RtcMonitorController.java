@@ -62,6 +62,8 @@ public class RtcMonitorController {
             String rid = roomIds.get(i);
             RoomStatus roomStatus = roomStatusService.findRoomStatusById(rid);
 
+            if(roomStatus == null)  continue;
+
             roomStatusList.add(roomStatus);
         }
 
