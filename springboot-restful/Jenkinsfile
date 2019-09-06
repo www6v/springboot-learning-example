@@ -1,7 +1,7 @@
 pipeline {
    environment {
-     REGISTRY_ENDPOINT = "https://monitorLogUpload:1.0/v2/"
-     IMAGE_WITH_TAG = "monitorLogUpload:1.0"
+     REGISTRY_ENDPOINT = "https://monitor-log-upload:1.0/v2/"
+     IMAGE_WITH_TAG = "monitor-log-upload:1.0"
      REGISTRY_CERTS = "registry"
    }
   agent {

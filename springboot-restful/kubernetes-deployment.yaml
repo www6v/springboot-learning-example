@@ -33,7 +33,7 @@ spec:
         derrick.service: springboot-restful
     spec:
       containers:
-      - image: monitorLogUpload:1.0
+      - image: monitor-log-upload:1.0
         name: web
         ports:
         - containerPort: 8080

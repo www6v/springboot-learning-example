@@ -3,7 +3,7 @@ services:
   web:
     build:
         context: .
-    image: monitorLogUpload:1.0
+    image: monitor-log-upload:1.0
     ports:
       - 8080
     restart: always
