@@ -1,4 +1,4 @@
-FROM maven:3-jdk-8-alpine 
+FROM maven:3-jdk-8-alpine AS build-env
 
 WORKDIR /app
 COPY . /app
