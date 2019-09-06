@@ -2,6 +2,7 @@ package org.spring.springboot.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.spring.springboot.domain.RoomReq;
 import org.spring.springboot.domain.RoomStatus;
 import org.spring.springboot.domain.UserInfo;
 import org.spring.springboot.service.RoomStatusService;
@@ -54,13 +55,16 @@ public class RtcMonitorController {
     }
 
     @PostMapping("/api/roomsStatus")
-    public List<RoomStatus> findStatusOfRooms(@RequestBody List<String> roomIds) {
+    public List<RoomStatus> findStatusOfRooms(@RequestBody RoomReq req) {
+        List<String> roomIds = req.getRoomIds();
 
         List<RoomStatus> roomStatusList = new ArrayList<>();
 
         for(int i =0; i< roomIds.size(); i++) {
             String rid = roomIds.get(i);
             RoomStatus roomStatus = roomStatusService.findRoomStatusById(rid);
+
+            if(roomStatus == null)  continue;
 
             roomStatusList.add(roomStatus);
         }
