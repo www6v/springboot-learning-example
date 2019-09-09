@@ -6,15 +6,15 @@ metadata:
     derrick.service.type: nodeport
     derrick.version: 0.0.24
   labels:
-    derrick.service: springboot-monitor
-  name: springboot-monitor
+    derrick.service: rtcMonitor
+  name: rtcMonitor
 spec:
   ports:
   - name: "8080"
     port: 8080
     targetPort: 8080
   selector:
-    derrick.service: springboot-monitor
+    derrick.service: rtcMonitor
   type: NodePort
 ---
 apiVersion: extensions/v1beta1
@@ -23,14 +23,14 @@ metadata:
   annotations:
     derrick.version: 0.0.24
   labels:
-    derrick.service: springboot-monitor
-  name: springboot-monitor
+    derrick.service: rtcMonitor
+  name: rtcMonitor
 spec:
   replicas: 1
   template:
     metadata:
       labels:
-        derrick.service: springboot-monitor
+        derrick.service: rtcMonitor
     spec:
       containers:
       - image: rtc-monitor:1.0
