@@ -46,12 +46,12 @@ public class RtcRestController {
 
 
     @ResponseBody
-    @RequestMapping(value = "/api/rtcJoinLeaveClinetLog", method = RequestMethod.POST)
+    @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
 //    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
-    public String createRtcJoinLeaveClinetLog(@RequestBody String rtcJoinLeaveClinetLog) {
+    public String createRtcJoinLeaveClinetLog(@RequestBody String rtcJoinLeaveClientLog) {
 
         try {
-            String jsonString = rtcJoinLeaveClinetLog;
+            String jsonString = rtcJoinLeaveClientLog;
 //            logger.debug(jsonString);
 
 //            String path = "D:\\temp\\appendFile.txt"; // windows
@@ -62,6 +62,6 @@ public class RtcRestController {
             e.printStackTrace();
         }
 
-        return rtcJoinLeaveClinetLog;
+        return rtcJoinLeaveClientLog;
     }
 }
