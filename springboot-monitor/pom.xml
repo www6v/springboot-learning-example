@@ -3,13 +3,13 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>springboot</groupId>
-    <artifactId>springboot-monitor</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <groupId>rtc</groupId>
+    <artifactId>monitor-log</artifactId>
+    <version>1.0</version>
     <!-- -->
     <packaging>jar</packaging>
 
-    <name>springboot-monitor</name>
+    <name>monitor-log</name>
 
     <!-- Spring Boot 启动父依赖 -->
     <parent>
