@@ -58,33 +58,33 @@ public class CityRestController {
         cityService.deleteCity(id);
     }
 
-    @ResponseBody
-    @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
-//    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
-    public String createRtcClinetLog(@RequestBody String rtcClinetLog) {
-
-        try {
-            String jsonString = rtcClinetLog;
-
-//            String jsonString = JSON.toJSONString(rtcClinetLog,
-//                    SerializerFeature.WriteNullStringAsEmpty);
-//            SerializerFeature.UseSingleQuotes
-//            SerializerFeature.PrettyFormat,
-
-//            logger.debug(jsonString);
-
-//            String path = "D:\\temp\\appendFile.txt"; // windows
-            String path = "/home/urtc/data/appendFile.log"; // linux
-            File file = new File(path);
-            Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND).write(jsonString + "\n");
-
-//            String read2 = Files.asCharSource(file, Charsets.UTF_8).read();
-//            System.out.println("读取: " + read2);
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-        return rtcClinetLog;
-    }
+//    @ResponseBody
+//    @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
+////    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
+//    public String createRtcClinetLog(@RequestBody String rtcClinetLog) {
+//
+//        try {
+//            String jsonString = rtcClinetLog;
+//
+////            String jsonString = JSON.toJSONString(rtcClinetLog,
+////                    SerializerFeature.WriteNullStringAsEmpty);
+////            SerializerFeature.UseSingleQuotes
+////            SerializerFeature.PrettyFormat,
+//
+////            logger.debug(jsonString);
+//
+////            String path = "D:\\temp\\appendFile.txt"; // windows
+//            String path = "/home/urtc/data/appendFile.log"; // linux
+//            File file = new File(path);
+//            Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND).write(jsonString + "\n");
+//
+////            String read2 = Files.asCharSource(file, Charsets.UTF_8).read();
+////            System.out.println("读取: " + read2);
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
+//
+//        return rtcClinetLog;
+//    }
 }
