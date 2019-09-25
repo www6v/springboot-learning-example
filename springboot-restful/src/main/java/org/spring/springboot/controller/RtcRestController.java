@@ -1,5 +1,6 @@
 package org.spring.springboot.controller;
 
+import com.alibaba.fastjson.JSON;
 import com.google.common.base.Charsets;
 import com.google.common.io.FileWriteMode;
 import com.google.common.io.Files;
@@ -47,11 +48,12 @@ public class RtcRestController {
 
     @ResponseBody
     @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
-//    public RtcClinetLog createRtcClinetLog(@RequestBody RtcClinetLog rtcClinetLog) {
-    public String createRtcJoinLeaveClinetLog(@RequestBody String rtcJoinLeaveClientLog) {
+//    public String createRtcJoinLeaveClinetLog(@RequestBody String rtcJoinLeaveClientLog) {
+        public String createRtcJoinLeaveClinetLog(@RequestBody RtcInitOrLeaveLog rtcJoinLeaveClientLog) {
 
+        String jsonString;
         try {
-            String jsonString = rtcJoinLeaveClientLog;
+            jsonString = JSON.toJSONString(rtcJoinLeaveClientLog);
 //            logger.debug(jsonString);
 
 //            String path = "D:\\temp\\appendFile.txt"; // windows
@@ -59,9 +61,10 @@ public class RtcRestController {
             File file = new File(path);
             Files.asCharSink(file, Charsets.UTF_8, FileWriteMode.APPEND).write(jsonString + "\n");
         } catch (IOException e) {
-            e.printStackTrace();
+//            e.printStackTrace();
+            return e.toString();
         }
 
-        return rtcJoinLeaveClientLog;
+        return jsonString;
     }
 }
