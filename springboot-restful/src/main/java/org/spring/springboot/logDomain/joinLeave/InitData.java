@@ -1,4 +1,4 @@
-package org.spring.springboot.controller;
+package org.spring.springboot.logDomain.joinLeave;
 
 public class InitData extends Data {
     private String  sdkv;  /// sdk 版本号

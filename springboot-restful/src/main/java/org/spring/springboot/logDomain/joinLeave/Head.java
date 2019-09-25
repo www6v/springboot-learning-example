@@ -1,8 +1,22 @@
-package org.spring.springboot.controller;
+package org.spring.springboot.logDomain.joinLeave;
 
-public class RtcInitOrLeaveLog extends RtcParentLog {
+/**
+ * Created by www6v on 2019/8/15.
+ */
+public class Head {
+    String method; ///: "logup",
+    String version; ///: 1.0,
+    String rpc_id; ///: xxxx,
+    Integer mtype; ///: 1 cam 2 screen,
+    Integer type; /// log分类 取值 1 2 3, 1 通话开始 2 通话状态 3 通话结束
+    Integer stype; ///: 1 pub 1 sub,
+    Long ts; ///:uint32 time sec 1970,
+    String aid; ///: string,
+    String rid; ///: string,
+    String sid; ///: string,
+    String uid;  ///: string
+    String streamid; ///: string,
 
-    private InitData data;
 
     public String getMethod() {
         return method;
@@ -92,7 +106,6 @@ public class RtcInitOrLeaveLog extends RtcParentLog {
         this.uid = uid;
     }
 
-
     public String getStreamid() {
         return streamid;
     }
@@ -100,19 +113,4 @@ public class RtcInitOrLeaveLog extends RtcParentLog {
     public void setStreamid(String streamid) {
         this.streamid = streamid;
     }
-
-    public InitData getData() {
-        return data;
-    }
-
-    public void setData(InitData data) {
-        this.data = data;
-    }
 }
-
-
-
-
-
-
-
