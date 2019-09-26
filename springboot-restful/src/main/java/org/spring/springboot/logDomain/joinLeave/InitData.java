@@ -1,14 +1,22 @@
 package org.spring.springboot.logDomain.joinLeave;
 
-public class InitData extends Data {
-    private String  sdkv;  /// sdk 版本号
-    private String agent;/// sdk 类型
-    private String device;/// 设备类型类型
-    private String system;/// 系统描述
-    private String network;/// 网络类型
-    private String cpu;/// cpu 描述
-    private Integer mem;/// 内存大小
+import javax.validation.constraints.NotNull;
 
+public class InitData extends Data {
+    @NotNull(message = "不能为空")
+    private String  sdkv;  /// sdk 版本号
+    @NotNull(message = "不能为空")
+    private String agent;/// sdk 类型
+    @NotNull(message = "不能为空")
+    private String device;/// 设备类型类型
+    @NotNull(message = "不能为空")
+    private String system;/// 系统描述
+    @NotNull(message = "不能为空")
+    private String network;/// 网络类型
+    @NotNull(message = "不能为空")
+    private String cpu;/// cpu 描述
+    @NotNull(message = "不能为空")
+    private Integer mem;/// 内存大小
 
     public String getSdkv() {
         return sdkv;

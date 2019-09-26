@@ -8,8 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.springboot.logDomain.joinLeave.RtcInitOrLeaveLog;
 import org.spring.springboot.logDomain.status.RtcStatusLog;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
 
@@ -19,7 +21,11 @@ public class RtcRestController {
 
     @ResponseBody
     @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
-    public String createRtcClinetLog(@RequestBody RtcStatusLog rtcClinetLog) {
+    public String createRtcClinetLog(@RequestBody  @Valid RtcStatusLog rtcClinetLog,
+                                     BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Input json is not valid.";
+        }
 
         String jsonString;
         try {
@@ -45,8 +51,11 @@ public class RtcRestController {
 
     @ResponseBody
     @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
-//    public String createRtcJoinLeaveClinetLog(@RequestBody String rtcJoinLeaveClientLog) {
-        public String createRtcJoinLeaveClinetLog(@RequestBody RtcInitOrLeaveLog rtcJoinLeaveClientLog) {
+        public String createRtcJoinLeaveClinetLog(@RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog,
+            BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "Input json is not valid.";
+        }
 
         String jsonString;
         try {

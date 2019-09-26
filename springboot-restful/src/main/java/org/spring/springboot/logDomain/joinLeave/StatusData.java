@@ -3,9 +3,13 @@ package org.spring.springboot.logDomain.joinLeave;
 import org.spring.springboot.logDomain.status.Audio;
 import org.spring.springboot.logDomain.status.Video;
 
+import javax.validation.constraints.NotNull;
+
 public class StatusData {
 
+   @NotNull(message = "不能为空")
    private Integer rtt; ///: int ms, //pub 有效
+   @NotNull(message = "不能为空")
    private Integer delay; ///:int, //sub 有效
 
     private Audio audio;

@@ -1,21 +1,35 @@
 package org.spring.springboot.logDomain.joinLeave;
 
+import javax.validation.constraints.NotNull;
+
 /**
  * Created by www6v on 2019/8/15.
  */
 public class Head {
-    String method; ///: "logup",
-    String version; ///: 1.0,
-    String rpc_id; ///: xxxx,
-    Integer mtype; ///: 1 cam 2 screen,
-    Integer type; /// log分类 取值 1 2 3, 1 通话开始 2 通话状态 3 通话结束
-    Integer stype; ///: 1 pub 1 sub,
-    Long ts; ///:uint32 time sec 1970,
-    String aid; ///: string,
-    String rid; ///: string,
-    String sid; ///: string,
-    String uid;  ///: string
-    String streamid; ///: string,
+    @NotNull(message = "不能为空")
+    public String method; ///: "logup",
+    @NotNull(message = "不能为空")
+    public String version; ///: 1.0,
+    @NotNull(message = "不能为空")
+    public String rpc_id; ///: xxxx,
+    @NotNull(message = "不能为空")
+    public Integer mtype; ///: 1 cam 2 screen,
+    @NotNull(message = "不能为空")
+    public Integer type; /// log分类 取值 1 2 3, 1 通话开始 2 通话状态 3 通话结束
+    @NotNull(message = "不能为空")
+    public Integer stype; ///: 1 pub 1 sub,
+    @NotNull(message = "不能为空")
+    public Long ts; ///:uint32 time sec 1970,
+    @NotNull(message = "不能为空")
+    public String aid; ///: string,
+    @NotNull(message = "不能为空")
+    public String rid; ///: string,
+    @NotNull(message = "不能为空")
+    public String sid; ///: string,
+    @NotNull(message = "不能为空")
+    public String uid;  ///: string
+    @NotNull(message = "不能为空")
+    public String streamid; ///: string,
 
 
     public String getMethod() {

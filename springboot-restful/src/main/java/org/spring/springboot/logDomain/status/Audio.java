@@ -1,12 +1,14 @@
 package org.spring.springboot.logDomain.status;
 
 
+import javax.validation.constraints.NotNull;
+
 public class Audio {
+
     private Integer br; ///:  int bps,
     private Integer lostpre; ///: int  0 – 100,
     private Integer vol; ///: 0 – 100,
     private String mime; ///:string "opus"  " vp8"  " h264"
-
 
     public Integer getBr() {
         return br;
