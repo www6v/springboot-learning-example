@@ -7,11 +7,11 @@ import javax.validation.constraints.NotNull;
  */
 public class Head {
     @NotNull(message = "不能为空")
-    public String method; ///: "logup",
+    public String method;
     @NotNull(message = "不能为空")
-    public String version; ///: 1.0,
+    public String version;
     @NotNull(message = "不能为空")
-    public String rpc_id; ///: xxxx,
+    public String rpc_id;
     @NotNull(message = "不能为空")
     public Integer mtype; ///: 1 cam 2 screen,
     @NotNull(message = "不能为空")
@@ -19,17 +19,17 @@ public class Head {
     @NotNull(message = "不能为空")
     public Integer stype; ///: 1 pub 1 sub,
     @NotNull(message = "不能为空")
-    public Long ts; ///:uint32 time sec 1970,
+    public Long ts;
     @NotNull(message = "不能为空")
-    public String aid; ///: string,
+    public String aid;
     @NotNull(message = "不能为空")
-    public String rid; ///: string,
+    public String rid;
     @NotNull(message = "不能为空")
-    public String sid; ///: string,
+    public String sid;
     @NotNull(message = "不能为空")
-    public String uid;  ///: string
+    public String uid;
     @NotNull(message = "不能为空")
-    public String streamid; ///: string,
+    public String streamid;
 
 
     public String getMethod() {
