@@ -6,11 +6,15 @@ import org.spring.springboot.logDomain.status.Video;
 import javax.validation.constraints.NotNull;
 
 public class StatusData {
+    @NotNull(message = "不能为空")
+    private Integer rtt; ///: int ms, //pub 有效
+    @NotNull(message = "不能为空")
+    private Integer delay; ///:int, //sub 有效
 
-   @NotNull(message = "不能为空")
-   private Integer rtt; ///: int ms, //pub 有效
-   @NotNull(message = "不能为空")
-   private Integer delay; ///:int, //sub 有效
+    @NotNull(message = "不能为空")
+    private Integer cpu;
+    @NotNull(message = "不能为空")
+    private Integer memory;
 
     private Audio audio;
     private Video video;
