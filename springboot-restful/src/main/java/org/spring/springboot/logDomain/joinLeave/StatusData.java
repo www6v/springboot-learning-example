@@ -50,4 +50,18 @@ public class StatusData {
     public void setVideo(Video video) {
         this.video = video;
     }
+
+    public Integer getCpu() {
+        return cpu;
+    }
+    public void setCpu(Integer cpu) {
+        this.cpu = cpu;
+    }
+
+    public Integer getMemory() {
+        return memory;
+    }
+    public void setMemory(Integer memory) {
+        this.memory = memory;
+    }
 }
