@@ -3,10 +3,11 @@ package org.spring.springboot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.springboot.domain.RoomReq;
-import org.spring.springboot.domain.RoomStatus;
-import org.spring.springboot.domain.UserInfo;
-import org.spring.springboot.service.RoomStatusService;
-import org.spring.springboot.service.RoomUserService;
+import org.spring.springboot.entity.Operation;
+import org.spring.springboot.entity.RoomStatus;
+import org.spring.springboot.entity.UserInfo;
+import org.spring.springboot.service.RoomService;
+import org.spring.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,22 +19,22 @@ public class RtcMonitorController {
     Logger logger=  LoggerFactory.getLogger(RtcMonitorController.class);
 
     @Autowired
-    private RoomStatusService roomStatusService;
+    private RoomService roomService;
     @Autowired
-    private RoomUserService roomUserService;
+    private UserService userService;
 
-
+    @Deprecated
     @ResponseBody
     @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
     public RoomStatus findRoomStatus(@PathVariable("roomId") String roomId) {
-        return roomStatusService.findRoomStatusById(roomId);
+        return roomService.findRoomStatusById(roomId);
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/roomUsers/{roomId}", method = RequestMethod.GET)
     public Map<String, List<UserInfo>> findRoomUsers(@PathVariable("roomId") String roomId) {
         HashMap<String, List<UserInfo>> userMap = new HashMap<>();
-        List<UserInfo> roomUsersList = roomUserService.findRoomUsersById(roomId);
+        List<UserInfo> roomUsersList = userService.findRoomUsersById(roomId);
 
         Iterator<UserInfo> iterator = roomUsersList.iterator();
         while(iterator.hasNext()) {
@@ -62,7 +63,7 @@ public class RtcMonitorController {
 
         for(int i =0; i< roomIds.size(); i++) {
             String rid = roomIds.get(i);
-            RoomStatus roomStatus = roomStatusService.findRoomStatusById(rid);
+            RoomStatus roomStatus = roomService.findRoomStatusById(rid);
 
             if(roomStatus == null)  continue;
 
@@ -70,5 +71,10 @@ public class RtcMonitorController {
         }
 
         return roomStatusList;
+    }
+
+    @PostMapping("/api/userOperation/{roomId}/{userId}")
+    public List<Operation>  getUserOperation(@PathVariable String roomId, @PathVariable String userId) {
+        return userService.getUserOperation(roomId, userId);
     }
 }
