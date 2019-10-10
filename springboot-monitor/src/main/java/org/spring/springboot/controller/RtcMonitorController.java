@@ -25,14 +25,33 @@ public class RtcMonitorController {
 
     @Deprecated
     @ResponseBody
-    @RequestMapping(value = "/api/roomStatus/{roomId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/roomStatus/{appId}/{roomId}", method = RequestMethod.GET)
     public RoomStatus findRoomStatus(@PathVariable("roomId") String roomId) {
         return roomService.findRoomStatusById(roomId);
     }
 
+    @PostMapping("/api/roomsStatus")
+    public List<RoomStatus> findStatusOfRooms(@RequestBody RoomReq req) {
+        List<String> roomIds = req.getRoomIds();
+
+        List<RoomStatus> roomStatusList = new ArrayList<>();
+
+        for(int i =0; i< roomIds.size(); i++) {
+            String rid = roomIds.get(i);
+            RoomStatus roomStatus = roomService.findRoomStatusById(rid);
+
+            if(roomStatus == null)  continue;
+
+            roomStatusList.add(roomStatus);
+        }
+
+        return roomStatusList;
+    }
+
     @ResponseBody
-    @RequestMapping(value = "/api/roomUsers/{roomId}", method = RequestMethod.GET)
-    public Map<String, List<UserInfo>> findRoomUsers(@PathVariable("roomId") String roomId) {
+    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}", method = RequestMethod.GET)
+    public Map<String, List<UserInfo>> findRoomUsers(@PathVariable("appId") String appId,
+                                                     @PathVariable("roomId") String roomId) {
         HashMap<String, List<UserInfo>> userMap = new HashMap<>();
         List<UserInfo> roomUsersList = userService.findRoomUsersById(roomId);
 
@@ -55,25 +74,9 @@ public class RtcMonitorController {
         return userMap;
     }
 
-    @PostMapping("/api/roomsStatus")
-    public List<RoomStatus> findStatusOfRooms(@RequestBody RoomReq req) {
-        List<String> roomIds = req.getRoomIds();
 
-        List<RoomStatus> roomStatusList = new ArrayList<>();
-
-        for(int i =0; i< roomIds.size(); i++) {
-            String rid = roomIds.get(i);
-            RoomStatus roomStatus = roomService.findRoomStatusById(rid);
-
-            if(roomStatus == null)  continue;
-
-            roomStatusList.add(roomStatus);
-        }
-
-        return roomStatusList;
-    }
-
-    @PostMapping("/api/userOperation/{roomId}/{userId}")
+    @ResponseBody
+    @RequestMapping(value = "/api/userOperation/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
     public List<Operation>  getUserOperation(@PathVariable String roomId, @PathVariable String userId) {
         return userService.getUserOperation(roomId, userId);
     }
