@@ -3,6 +3,7 @@ package org.spring.springboot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.springboot.domain.RoomReq;
+import org.spring.springboot.entity.ExceptionPO;
 import org.spring.springboot.entity.Operation;
 import org.spring.springboot.entity.RoomStatus;
 import org.spring.springboot.entity.UserInfo;
@@ -79,5 +80,11 @@ public class RtcMonitorController {
     @RequestMapping(value = "/api/userOperation/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
     public List<Operation>  getUserOperation(@PathVariable String roomId, @PathVariable String userId) {
         return userService.getUserOperation(roomId, userId);
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/api/userException/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
+    public List<ExceptionPO>  getUserException(@PathVariable String roomId, @PathVariable String userId) {
+        return userService.getUserException(roomId, userId);
     }
 }

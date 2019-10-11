@@ -1,4 +1,4 @@
-package org.spring.springboot.logDomain.joinLeave;
+package org.spring.springboot.logDomain.common;
 
 import javax.validation.constraints.NotNull;
 
