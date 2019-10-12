@@ -1,6 +1,6 @@
 package org.spring.springboot.logDomain.status;
 
-import org.spring.springboot.logDomain.joinLeave.Head;
+import org.spring.springboot.logDomain.common.Head;
 import org.spring.springboot.logDomain.joinLeave.StatusData;
 
 import javax.validation.Valid;

@@ -1,6 +1,8 @@
 package org.spring.springboot.logDomain.joinLeave;
 
-public class RtcParentLog extends  Head {
+import org.spring.springboot.logDomain.common.Head;
+
+public class RtcParentLog extends Head {
 }
 
 

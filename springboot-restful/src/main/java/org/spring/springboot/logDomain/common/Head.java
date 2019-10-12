@@ -1,5 +1,7 @@
 package org.spring.springboot.logDomain.common;
 
+import org.hibernate.validator.constraints.Length;
+
 import javax.validation.constraints.NotNull;
 
 /**
@@ -8,26 +10,40 @@ import javax.validation.constraints.NotNull;
 public class Head {
     @NotNull(message = "不能为空")
     public String method;
+
     @NotNull(message = "不能为空")
     public String version;
+
     @NotNull(message = "不能为空")
     public String rpc_id;
+
     @NotNull(message = "不能为空")
     public Integer mtype; ///: 1 cam 2 screen,
+
     @NotNull(message = "不能为空")
     public Integer type; /// log分类 取值 1 2 3, 1 通话开始 2 通话状态 3 通话结束
+
     @NotNull(message = "不能为空")
     public Integer stype; ///: 1 pub 1 sub,
+
     @NotNull(message = "不能为空")
     public Long ts;
+
+    @Length(min = 1, max = 100)
     @NotNull(message = "不能为空")
     public String aid;
+
+    @Length(min = 1, max = 100)
     @NotNull(message = "不能为空")
     public String rid;
+
     @NotNull(message = "不能为空")
     public String sid;
+
+    @Length(min = 1, max = 100)
     @NotNull(message = "不能为空")
     public String uid;
+
     @NotNull(message = "不能为空")
     public String streamid;
 

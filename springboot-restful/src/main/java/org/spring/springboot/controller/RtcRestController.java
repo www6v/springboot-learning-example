@@ -27,14 +27,14 @@ public class RtcRestController {
     public static final String EXCEPTION_LOG_PATH = "/home/urtc/data/appendFileExceptionLog.log";
 
     @ResponseBody
-    @RequestMapping(value = "/api/exceptionLog", method = RequestMethod.POST)
-    public String createExceptionLog(@RequestBody @Valid ExceptionLog exceptionLog,
-                                    BindingResult bindingResult) {
-        if (errorHandle(bindingResult))
-            return "Input json is not valid.";
+    @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
+    public String createRtcJoinLeaveClinetLog(@RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog,
+                                              BindingResult bindingResult) {
+        if (errorHandle(bindingResult)) return "Input json is not valid.";
 
-        return persistJsonToFile(exceptionLog, EXCEPTION_LOG_PATH);
+        return persistJsonToFile(rtcJoinLeaveClientLog, JOIN_LEAVE_LOG_PATH);
     }
+
 
     @ResponseBody
     @RequestMapping(value = "/api/opertionLog", method = RequestMethod.POST)
@@ -46,9 +46,6 @@ public class RtcRestController {
         return persistJsonToFile(opertionLog, OPERATION_LOG_PATH);
     }
 
-    //            String jsonString = JSON.toJSONString(rtcClinetLog,
-    //            SerializerFeature.WriteNullStringAsEmpty);
-
     @ResponseBody
     @RequestMapping(value = "/api/rtcClinetLog", method = RequestMethod.POST)
     public String createRtcClientLog(@RequestBody  @Valid RtcStatusLog rtcClinetLog,
@@ -57,15 +54,19 @@ public class RtcRestController {
         return persistJsonToFile(rtcClinetLog, STATUS_LOG_PATH);
     }
 
-
     @ResponseBody
-    @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
-        public String createRtcJoinLeaveClinetLog(@RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog,
-            BindingResult bindingResult) {
-        if (errorHandle(bindingResult)) return "Input json is not valid.";
+    @RequestMapping(value = "/api/exceptionLog", method = RequestMethod.POST)
+    public String createExceptionLog(@RequestBody @Valid ExceptionLog exceptionLog,
+                                     BindingResult bindingResult) {
+        if (errorHandle(bindingResult))
+            return "Input json is not valid.";
 
-        return persistJsonToFile(rtcJoinLeaveClientLog, JOIN_LEAVE_LOG_PATH);
+        return persistJsonToFile(exceptionLog, EXCEPTION_LOG_PATH);
     }
+
+    //            String jsonString = JSON.toJSONString(rtcClinetLog,
+    //            SerializerFeature.WriteNullStringAsEmpty);
+
 
     private String persistJsonToFile(Object rtcJoinLeaveClientLog, String fileName) {
         String jsonString;

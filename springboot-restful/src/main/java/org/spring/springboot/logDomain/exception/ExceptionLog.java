@@ -1,6 +1,6 @@
 package org.spring.springboot.logDomain.exception;
 
-import org.spring.springboot.logDomain.joinLeave.Head;
+import org.spring.springboot.logDomain.common.Head;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
@@ -17,26 +17,3 @@ public class ExceptionLog  extends Head {
         this.data = data;
     }
 }
-
-
-
-
-
-
-//{
-//        "version": "1.0",
-//        "method": "xxx",
-//        "rpc_id": "xxx",
-//        "type": 4,  /// 异常
-//        "ts": 22222233232,
-//        "mtype": 1,
-//        "aid": "xxx",
-//        "rid": "xxx",
-//        "uid": "xxx",
-//        "sid": "xxx",
-//        "streamid": "xxx",
-//        "stype": 5,
-//        "data": {
-//
-//        }
-//        }
