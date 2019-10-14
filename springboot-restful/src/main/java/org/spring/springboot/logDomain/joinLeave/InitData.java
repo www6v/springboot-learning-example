@@ -3,6 +3,8 @@ package org.spring.springboot.logDomain.joinLeave;
 import javax.validation.constraints.NotNull;
 
 public class InitData extends Data {
+    private String  region;  /// 區域
+
     @NotNull(message = "不能为空")
     private String  sdkv;  /// sdk 版本号
     @NotNull(message = "不能为空")
@@ -72,5 +74,13 @@ public class InitData extends Data {
 
     public void setMem(Integer mem) {
         this.mem = mem;
+    }
+
+    public String getRegion() {
+        return region;
+    }
+
+    public void setRegion(String region) {
+        this.region = region;
     }
 }

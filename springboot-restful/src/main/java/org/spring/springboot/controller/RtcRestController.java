@@ -10,9 +10,12 @@ import org.spring.springboot.logDomain.exception.ExceptionLog;
 import org.spring.springboot.logDomain.joinLeave.RtcInitOrLeaveLog;
 import org.spring.springboot.logDomain.operation.OpertionLog;
 import org.spring.springboot.logDomain.status.RtcStatusLog;
+import org.spring.springboot.util.AreaAndNetworkUtil;
+import org.spring.springboot.util.IpUtil;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.io.File;
 import java.io.IOException;
@@ -28,13 +31,21 @@ public class RtcRestController {
 
     @ResponseBody
     @RequestMapping(value = "/api/rtcJoinLeaveClientLog", method = RequestMethod.POST)
-    public String createRtcJoinLeaveClinetLog(@RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog,
+    public String createRtcJoinLeaveClinetLog(HttpServletRequest request,
+            @RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog,
                                               BindingResult bindingResult) {
+        setUserRegion(request, rtcJoinLeaveClientLog);
+
         if (errorHandle(bindingResult)) return "Input json is not valid.";
 
         return persistJsonToFile(rtcJoinLeaveClientLog, JOIN_LEAVE_LOG_PATH);
     }
 
+    private void setUserRegion(HttpServletRequest request, @RequestBody @Valid RtcInitOrLeaveLog rtcJoinLeaveClientLog) {
+        String ip = IpUtil.getIpAddr(request);
+        String region = AreaAndNetworkUtil.getRegionFromIP(ip);
+        rtcJoinLeaveClientLog.getData().setRegion(region);
+    }
 
     @ResponseBody
     @RequestMapping(value = "/api/opertionLog", method = RequestMethod.POST)
