@@ -3,10 +3,7 @@ package org.spring.springboot.controller;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.spring.springboot.domain.RoomReq;
-import org.spring.springboot.entity.ExceptionPO;
-import org.spring.springboot.entity.Operation;
-import org.spring.springboot.entity.RoomStatus;
-import org.spring.springboot.entity.UserInfo;
+import org.spring.springboot.entity.*;
 import org.spring.springboot.service.RoomService;
 import org.spring.springboot.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -49,19 +46,20 @@ public class RtcMonitorController {
         return roomStatusList;
     }
 
+    /// 用戶信息
     @ResponseBody
     @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}", method = RequestMethod.GET)
-    public Map<String, List<UserInfo>> findRoomUsers(@PathVariable("appId") String appId,
-                                                     @PathVariable("roomId") String roomId) {
-        HashMap<String, List<UserInfo>> userMap = new HashMap<>();
-        List<UserInfo> roomUsersList = userService.findRoomUsersById(roomId);
+    public Map<String, List<UserDetail>> findRoomUsers(@PathVariable("appId") String appId,
+                                                       @PathVariable("roomId") String roomId) {
+        HashMap<String, List<UserDetail>> userMap = new HashMap<>();
+        List<UserDetail> roomUsersList = userService.findRoomUsersById(roomId);
 
-        Iterator<UserInfo> iterator = roomUsersList.iterator();
+        Iterator<UserDetail> iterator = roomUsersList.iterator();
         while(iterator.hasNext()) {
-            UserInfo user = iterator.next();
+            UserDetail user = iterator.next();
             String concurentUserId = user.getUserId();
 
-            List<UserInfo> userInfosList = userMap.get(concurentUserId);
+            List<UserDetail> userInfosList = userMap.get(concurentUserId);
             if(userInfosList == null) {
                 userInfosList = new ArrayList<>();
                 userInfosList.add(user);
@@ -75,6 +73,16 @@ public class RtcMonitorController {
         return userMap;
     }
 
+
+    @ResponseBody
+    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
+    public List<UserInfo> findRoomUsers(@PathVariable("appId") String appId,
+                                                     @PathVariable("roomId") String roomId,
+                                                     @PathVariable("userId") String userId) {
+
+        List<UserInfo> userInfoList = userService.findUserInfoById(roomId, userId);
+        return userInfoList;
+    }
 
     @ResponseBody
     @RequestMapping(value = "/api/userOperation/{appId}/{roomId}/{userId}", method = RequestMethod.GET)

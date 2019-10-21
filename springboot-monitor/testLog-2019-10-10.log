@@ -22,7 +22,7 @@
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Identified candidate component class: file [D:\workspaceJava\springboot-learning-example\springboot-monitor\target\classes\org\spring\springboot\dao\UserOperationDao.class]
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Creating MapperFactoryBean with name 'roomStatusDao' and 'org.spring.springboot.dao.RoomStatusDao' mapperInterface
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Enabling autowire by type for MapperFactoryBean with name 'roomStatusDao'.
-11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Creating MapperFactoryBean with name 'roomUserDao' and 'org.spring.springboot.dao.RoomUserDao' mapperInterface
+11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Creating MapperFactoryBean with name 'roomUserDao' and 'org.spring.springboot.dao.RoomUserDetailDao' mapperInterface
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Enabling autowire by type for MapperFactoryBean with name 'roomUserDao'.
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Creating MapperFactoryBean with name 'userOperationDao' and 'org.spring.springboot.dao.UserOperationDao' mapperInterface
 11:04:50.320 [DEBUG] [main] [org.mybatis.spring.mapper.ClassPathMapperScanner] Enabling autowire by type for MapperFactoryBean with name 'userOperationDao'.
@@ -134,7 +134,7 @@
 11:04:53.338 [DEBUG] [main] [org.apache.ibatis.io.VFS] Using VFS adapter org.mybatis.spring.boot.autoconfigure.SpringBootVFS
 11:04:53.340 [DEBUG] [main] [org.apache.ibatis.io.ResolverUtil] Checking to see if class org.spring.springboot.entity.Operation matches criteria [is assignable to Object]
 11:04:53.341 [DEBUG] [main] [org.apache.ibatis.io.ResolverUtil] Checking to see if class org.spring.springboot.entity.RoomStatus matches criteria [is assignable to Object]
-11:04:53.341 [DEBUG] [main] [org.apache.ibatis.io.ResolverUtil] Checking to see if class org.spring.springboot.entity.UserInfo matches criteria [is assignable to Object]
+11:04:53.341 [DEBUG] [main] [org.apache.ibatis.io.ResolverUtil] Checking to see if class org.spring.springboot.entity.UserDetail matches criteria [is assignable to Object]
 11:04:53.342 [DEBUG] [main] [org.mybatis.spring.SqlSessionFactoryBean] Scanned package: 'org.spring.springboot.entity' for aliases
 11:04:53.888 [DEBUG] [main] [org.mybatis.spring.SqlSessionFactoryBean] Parsed mapper file: 'file [D:\workspaceJava\springboot-learning-example\springboot-monitor\target\classes\mapper\RoomStatusMapper.xml]'
 11:04:53.911 [DEBUG] [main] [org.mybatis.spring.SqlSessionFactoryBean] Parsed mapper file: 'file [D:\workspaceJava\springboot-learning-example\springboot-monitor\target\classes\mapper\RoomUserMapper.xml]'
