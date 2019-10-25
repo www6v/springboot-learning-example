@@ -52,7 +52,7 @@ public class RtcMonitorController {
 
     /// 2.1 room中用户接入的设备
     @ResponseBody
-    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}?startTime={startTime}&&endTime={endTime}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}", method = RequestMethod.GET)
     public Map<String, List<UserDetail>> findRoomUsers(@PathVariable("appId") String appId,
                                                        @PathVariable("roomId") String roomId,
                                                        @RequestParam("startTime") Long startTime,
