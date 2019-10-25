@@ -10,7 +10,7 @@ import java.util.List;
 public interface UserService {
     List<UserInfo> findUserInfoById(String roomId, String userId);
 
-    List<UserDetail> findRoomUsersById(String roomId);
+    List<UserDetail> findRoomUsersById(String appId, String roomId, Long startTime,Long endTime);
 
     List<Operation> getUserOperation(String roomId, String userId);
 

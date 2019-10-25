@@ -26,6 +26,7 @@
 		select
 		<include refid="Base_Column_List" />
 		from user_detail
-		where room_id = #{roomId}
+		where room_id = #{roomId} and
+		time >= #{startTime} and #{endTime} > time
 	</select>
 </mapper>

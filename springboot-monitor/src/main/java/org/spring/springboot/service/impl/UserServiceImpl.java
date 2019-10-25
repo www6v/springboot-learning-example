@@ -36,9 +36,14 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDetail> findRoomUsersById(String roomId) {
-        return roomUserDao.findRoomUserById(roomId);
+    public List<UserDetail> findRoomUsersById(String appId, String roomId, Long startTime, Long endTime) {
+        return roomUserDao.findRoomUserById(appId, roomId, startTime, endTime);
     }
+
+//    @Override
+//    public List<UserDetail> findRoomUsersById(String roomId) {
+//        return roomUserDao.findRoomUserById(roomId);
+//    }
 
     @Override
     public List<Operation> getUserOperation(String roomId,String userId) {

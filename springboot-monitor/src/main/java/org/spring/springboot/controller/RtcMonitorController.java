@@ -21,22 +21,26 @@ public class RtcMonitorController {
     @Autowired
     private UserService userService;
 
+    // romom的状态 1.1 单个
     @Deprecated
     @ResponseBody
     @RequestMapping(value = "/api/roomStatus/{appId}/{roomId}", method = RequestMethod.GET)
-    public RoomStatus findRoomStatus(@PathVariable("roomId") String roomId) {
-        return roomService.findRoomStatusById(roomId);
+    public RoomStatus findRoomStatus(@PathVariable("appId") String appId,
+                                     @PathVariable("roomId") String roomId) {
+        return roomService.findRoomStatusById(appId, roomId);
     }
 
+    /// romom的状态 1.2 批量
     @PostMapping("/api/roomsStatus")
     public List<RoomStatus> findStatusOfRooms(@RequestBody RoomReq req) {
+        String appId = req.getAppId();
         List<String> roomIds = req.getRoomIds();
 
         List<RoomStatus> roomStatusList = new ArrayList<>();
 
         for(int i =0; i< roomIds.size(); i++) {
             String rid = roomIds.get(i);
-            RoomStatus roomStatus = roomService.findRoomStatusById(rid);
+            RoomStatus roomStatus = roomService.findRoomStatusById(appId, rid);
 
             if(roomStatus == null)  continue;
 
@@ -46,13 +50,15 @@ public class RtcMonitorController {
         return roomStatusList;
     }
 
-    /// 用戶信息
+    /// 2.1 room中用户接入的设备
     @ResponseBody
-    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}", method = RequestMethod.GET)
+    @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}?startTime={startTime}&&endTime={endTime}", method = RequestMethod.GET)
     public Map<String, List<UserDetail>> findRoomUsers(@PathVariable("appId") String appId,
-                                                       @PathVariable("roomId") String roomId) {
+                                                       @PathVariable("roomId") String roomId,
+                                                       @RequestParam("startTime") Long startTime,
+                                                       @RequestParam("endTime") Long endTime) {
         HashMap<String, List<UserDetail>> userMap = new HashMap<>();
-        List<UserDetail> roomUsersList = userService.findRoomUsersById(roomId);
+        List<UserDetail> roomUsersList = userService.findRoomUsersById(appId, roomId, startTime, endTime);
 
         Iterator<UserDetail> iterator = roomUsersList.iterator();
         while(iterator.hasNext()) {
@@ -73,13 +79,12 @@ public class RtcMonitorController {
         return userMap;
     }
 
-
+    /// 2.2 用户使用时间
     @ResponseBody
     @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
     public List<UserInfo> findRoomUsers(@PathVariable("appId") String appId,
-                                                     @PathVariable("roomId") String roomId,
-                                                     @PathVariable("userId") String userId) {
-
+                                        @PathVariable("roomId") String roomId,
+                                        @PathVariable("userId") String userId) {
         List<UserInfo> userInfoList = userService.findUserInfoById(roomId, userId);
         return userInfoList;
     }

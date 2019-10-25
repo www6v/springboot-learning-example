@@ -8,12 +8,11 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class RoomServiceImpl implements RoomService {
-
     @Autowired
     private RoomStatusDao roomStatusDao;
 
     @Override
-    public RoomStatus findRoomStatusById(String roomId) {
-        return roomStatusDao.findRoomStatusById(roomId);
+    public RoomStatus findRoomStatusById(String appId, String roomId) {
+        return roomStatusDao.findRoomStatusById(appId, roomId);
     }
 }
