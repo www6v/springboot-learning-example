@@ -21,8 +21,9 @@
 		room_id, user_id, status_type, time, sdkv, agent, device,  system, network, cpu, mem, region
 	</sql>
 
-
-	<select id="findRoomUserById" resultMap="BaseResultMap" parameterType="java.lang.String">
+	<!--parameterType="java.lang.String"-->
+	
+	<select id="findRoomUserById" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
 		from user_detail
