@@ -13,10 +13,12 @@
 		room_id, user_id, status_type, time
 	</sql>
 
-	<select id="findUserInfoById" resultMap="BaseResultMap" parameterType="java.lang.String">
+	<!--parameterType="java.lang.String"-->
+	<select id="findUserInfoById" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
 		from user_time
-		where room_id = #{roomId} and  user_id = #{userId}
+		where room_id = #{roomId} and  user_id = #{userId} and
+		time > #{startTime} and   #{endTime} > time
 	</select>
 </mapper>

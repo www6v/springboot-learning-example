@@ -30,9 +30,14 @@ public class UserServiceImpl implements UserService {
     private RoomUserInfoDao roomUserInfoDao;
 
 
+//    @Override
+//    public List<UserInfo> findUserInfoById(String roomId, String userId) {
+//        return roomUserInfoDao.findUserInfoById(roomId,userId);
+//    }
+
     @Override
-    public List<UserInfo> findUserInfoById(String roomId, String userId) {
-        return roomUserInfoDao.findUserInfoById(roomId,userId);
+    public List<UserInfo> findUserInfoById(String roomId, String userId, Long startTime, Long endTime) {
+        return roomUserInfoDao.findUserInfoById(roomId, userId, startTime, endTime);
     }
 
     @Override
@@ -40,18 +45,28 @@ public class UserServiceImpl implements UserService {
         return roomUserDao.findRoomUserById(appId, roomId, startTime, endTime);
     }
 
+    @Override
+    public List<Operation> getUserOperation(String roomId, String userId, Long startTime, Long endTime) {
+        return userOperationDao.getUserOperation(roomId, userId, startTime, endTime);
+    }
+
+    @Override
+    public List<ExceptionPO> getUserException(String roomId, String userId, Long startTime, Long endTime) {
+        return userExceptionDao.getUserException(roomId, userId, startTime, endTime );
+    }
+
 //    @Override
 //    public List<UserDetail> findRoomUsersById(String roomId) {
 //        return roomUserDao.findRoomUserById(roomId);
 //    }
 
-    @Override
-    public List<Operation> getUserOperation(String roomId,String userId) {
-        return userOperationDao.getUserOperation(roomId, userId);
-    }
+//    @Override
+//    public List<Operation> getUserOperation(String roomId,String userId) {
+//        return userOperationDao.getUserOperation(roomId, userId);
+//    }
 
-    @Override
-    public List<ExceptionPO> getUserException(String roomId, String userId) {
-        return userExceptionDao.getUserException(roomId, userId);
-    }
+    //    @Override
+//    public List<ExceptionPO> getUserException(String roomId, String userId) {
+//        return userExceptionDao.getUserException(roomId, userId);
+//    }
 }

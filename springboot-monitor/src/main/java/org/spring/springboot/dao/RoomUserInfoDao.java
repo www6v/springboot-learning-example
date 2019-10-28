@@ -6,5 +6,8 @@ import java.util.List;
 
 public interface RoomUserInfoDao {
     List<UserInfo> findUserInfoById(@Param("roomId") String roomId,
-                                    @Param("userId") String userId);
+                                    @Param("userId") String userId,
+                                    Long startTime,
+                                    Long endTime
+    );
 }

@@ -18,5 +18,6 @@
 		<include refid="Base_Column_List" />
 		from user_exception
 		where  room_id= #{roomId} and user_id = #{userId}
+		and time > #{startTime} and #{endTime} >  time
 	</select>
 </mapper>

@@ -84,20 +84,32 @@ public class RtcMonitorController {
     @RequestMapping(value = "/api/roomUsers/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
     public List<UserInfo> findRoomUsers(@PathVariable("appId") String appId,
                                         @PathVariable("roomId") String roomId,
-                                        @PathVariable("userId") String userId) {
-        List<UserInfo> userInfoList = userService.findUserInfoById(roomId, userId);
+                                        @PathVariable("userId") String userId,
+
+                                        @RequestParam("startTime") Long startTime,
+                                        @RequestParam("endTime") Long endTime) {
+        List<UserInfo> userInfoList = userService.findUserInfoById(roomId, userId, startTime, endTime);
+
         return userInfoList;
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/userOperation/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
-    public List<Operation>  getUserOperation(@PathVariable String roomId, @PathVariable String userId) {
-        return userService.getUserOperation(roomId, userId);
+    public List<Operation>  getUserOperation(@PathVariable String roomId,
+                                             @PathVariable String userId,
+
+                                             @RequestParam("startTime") Long startTime,
+                                             @RequestParam("endTime") Long endTime) {
+        return userService.getUserOperation(roomId, userId, startTime, endTime);
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/userException/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
-    public List<ExceptionPO>  getUserException(@PathVariable String roomId, @PathVariable String userId) {
-        return userService.getUserException(roomId, userId);
+    public List<ExceptionPO>  getUserException(@PathVariable String roomId,
+                                               @PathVariable String userId,
+
+                                               @RequestParam("startTime") Long startTime,
+                                               @RequestParam("endTime") Long endTime) {
+        return userService.getUserException(roomId, userId, startTime, endTime);
     }
 }

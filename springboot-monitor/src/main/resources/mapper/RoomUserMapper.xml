@@ -22,7 +22,7 @@
 	</sql>
 
 	<!--parameterType="java.lang.String"-->
-	
+
 	<select id="findRoomUserById" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
