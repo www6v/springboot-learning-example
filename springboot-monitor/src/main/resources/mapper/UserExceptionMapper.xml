@@ -13,7 +13,8 @@
 		room_id, user_id, status_type, time, exception_type
 	</sql>
 
-	<select id="getUserException" resultMap="BaseResultMap" parameterType="java.lang.String">
+	<!--parameterType="java.lang.String"-->
+	<select id="getUserException" resultMap="BaseResultMap" >
 		select
 		<include refid="Base_Column_List" />
 		from user_exception
