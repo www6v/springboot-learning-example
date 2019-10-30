@@ -16,6 +16,11 @@ public class StatusData {
     @NotNull(message = "不能为空")
     private Integer memory;
 
+    @NotNull(message = "不能为空")
+    private String userid;
+    @NotNull(message = "不能为空")
+    private String streamid;
+
     private Audio audio;
     private Video video;
 
@@ -63,5 +68,21 @@ public class StatusData {
     }
     public void setMemory(Integer memory) {
         this.memory = memory;
+    }
+
+    public String getUserid() {
+        return userid;
+    }
+
+    public void setUserid(String userid) {
+        this.userid = userid;
+    }
+
+    public String getStreamid() {
+        return streamid;
+    }
+
+    public void setStreamid(String streamid) {
+        this.streamid = streamid;
     }
 }
