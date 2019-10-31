@@ -20,5 +20,6 @@
 		from user_operation
 		where  room_id= #{roomId} and user_id = #{userId}
 		and time >= #{startTime} and #{endTime} >= time
+		ORDER BY time 
 	</select>
 </mapper>
