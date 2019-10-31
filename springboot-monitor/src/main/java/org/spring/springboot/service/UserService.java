@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.List;
 
 public interface UserService {
-    List<UserInfo> findUserInfoById(String roomId, String userId, Long startTime, Long endTime);
-
     List<UserDetail> findRoomUsersById(String appId, String roomId, Long startTime,Long endTime);
+
+    List<UserInfo> findUserInfoById(String roomId, String userId, Long startTime, Long endTime);
 
     List<Operation> getUserOperation(String roomId, String userId, Long startTime, Long endTime);
 

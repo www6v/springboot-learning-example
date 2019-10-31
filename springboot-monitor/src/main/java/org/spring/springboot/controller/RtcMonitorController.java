@@ -76,7 +76,54 @@ public class RtcMonitorController {
             userMap.put(concurentUserId, userInfosList);
         }
 
-        return userMap;
+        return filterResult(userMap);
+    }
+
+    private Map<String, List<UserDetail>> filterResult(HashMap<String, List<UserDetail>> userMap) {
+        //        Map<String, List<UserDetail>> resultMap = new HashMap<String, List<UserDetail>>();
+//        userMap.forEach( (userId, list) -> {
+//            Comparator<UserDetail> comparator = (o1, o2) -> o1.compareTo(o2);
+//            Optional<UserDetail> min = list.stream().filter(x -> x.getStatusType() == 1).min(comparator);
+//            UserDetail userDetailMin = min.get();
+//
+//            Optional<UserDetail> max = list.stream().filter(x -> x.getStatusType() == 3).max(comparator);
+//            UserDetail userDetailMax = max.get();
+//
+//            List<UserDetail> l = new ArrayList<UserDetail>();
+//            l.add(userDetailMin);
+//            l.add(userDetailMax);
+//
+//            resultMap.putIfAbsent(userId, l);
+//        } );
+//
+//        return resultMap;
+
+        Map<String, List<UserDetail>> resultMap = new HashMap<>();
+        userMap.forEach( (userId, list) -> {
+//            System.out.println("userId"+ userId);
+//            System.out.println("list" + list.size());
+
+            List<UserDetail> l = new ArrayList<>();
+
+            Comparator<UserDetail> comparator = (o1, o2) -> o1.compareTo(o2);
+            Optional<UserDetail> min = list.stream().filter(x -> x.getStatusType() == 1).min(comparator);
+            if(min != null && min.isPresent()){
+                UserDetail userDetailMin = min.get();
+                l.add(userDetailMin);
+                System.out.println( "min:" + userDetailMin.getTime() );
+            }
+
+            Optional<UserDetail> max = list.stream().filter(x -> x.getStatusType() == 3).max(comparator);
+            if(max != null && max.isPresent()) {
+                UserDetail userDetailMax = max.get();
+                l.add(userDetailMax);
+                System.out.println( "max:" + userDetailMax.getTime() );
+            }
+
+            resultMap.putIfAbsent(userId, l);
+        } );
+
+        return resultMap;
     }
 
     /// 2.2 用户使用时间

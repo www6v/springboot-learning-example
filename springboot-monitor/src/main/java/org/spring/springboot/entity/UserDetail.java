@@ -119,4 +119,8 @@ public class UserDetail {
     public void setRegion(String region) {
         this.region = region;
     }
+
+    public int compareTo(UserDetail o2) {
+        return this.getTime().compareTo(o2.getTime());
+    }
 }
