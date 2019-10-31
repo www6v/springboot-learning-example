@@ -28,7 +28,7 @@
 		<include refid="Base_Column_List" />
 		from user_detail
 		where room_id = #{roomId} and
-		time >= #{startTime} and #{endTime} > time
+		time >= #{startTime} and #{endTime} >= time
 		ORDER BY time
 	</select>
 </mapper>
