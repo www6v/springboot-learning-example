@@ -73,10 +73,13 @@ public class RtcMonitorController {
             else {
                 userInfosList.add(user);
             }
+
             userMap.put(concurentUserId, userInfosList);
         }
 
-        return filterResult(userMap);
+        return userMap;
+
+//        return filterResult(userMap);
     }
 
     private Map<String, List<UserDetail>> filterResult(HashMap<String, List<UserDetail>> userMap) {
