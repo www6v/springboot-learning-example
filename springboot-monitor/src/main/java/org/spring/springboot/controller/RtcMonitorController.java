@@ -83,24 +83,6 @@ public class RtcMonitorController {
     }
 
     private Map<String, List<UserDetail>> filterResult(HashMap<String, List<UserDetail>> userMap) {
-        //        Map<String, List<UserDetail>> resultMap = new HashMap<String, List<UserDetail>>();
-//        userMap.forEach( (userId, list) -> {
-//            Comparator<UserDetail> comparator = (o1, o2) -> o1.compareTo(o2);
-//            Optional<UserDetail> min = list.stream().filter(x -> x.getStatusType() == 1).min(comparator);
-//            UserDetail userDetailMin = min.get();
-//
-//            Optional<UserDetail> max = list.stream().filter(x -> x.getStatusType() == 3).max(comparator);
-//            UserDetail userDetailMax = max.get();
-//
-//            List<UserDetail> l = new ArrayList<UserDetail>();
-//            l.add(userDetailMin);
-//            l.add(userDetailMax);
-//
-//            resultMap.putIfAbsent(userId, l);
-//        } );
-//
-//        return resultMap;
-
         Map<String, List<UserDetail>> resultMap = new HashMap<>();
         userMap.forEach( (userId, list) -> {
 //            System.out.println("userId"+ userId);
@@ -138,28 +120,30 @@ public class RtcMonitorController {
 
                                         @RequestParam("startTime") Long startTime,
                                         @RequestParam("endTime") Long endTime) {
-        List<UserInfo> userInfoList = userService.findUserInfoById(roomId, userId, startTime, endTime);
+        List<UserInfo> userInfoList = userService.findUserInfoById(appId, roomId, userId, startTime, endTime);
 
         return userInfoList;
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/userOperation/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
-    public List<Operation>  getUserOperation(@PathVariable String roomId,
+    public List<Operation>  getUserOperation(@PathVariable String appId,
+                                             @PathVariable String roomId,
                                              @PathVariable String userId,
 
                                              @RequestParam("startTime") Long startTime,
                                              @RequestParam("endTime") Long endTime) {
-        return userService.getUserOperation(roomId, userId, startTime, endTime);
+        return userService.getUserOperation(appId, roomId, userId, startTime, endTime);
     }
 
     @ResponseBody
     @RequestMapping(value = "/api/userException/{appId}/{roomId}/{userId}", method = RequestMethod.GET)
-    public List<ExceptionPO>  getUserException(@PathVariable String roomId,
+    public List<ExceptionPO>  getUserException(@PathVariable String appId,
+                                               @PathVariable String roomId,
                                                @PathVariable String userId,
 
                                                @RequestParam("startTime") Long startTime,
                                                @RequestParam("endTime") Long endTime) {
-        return userService.getUserException(roomId, userId, startTime, endTime);
+        return userService.getUserException(appId, roomId, userId, startTime, endTime);
     }
 }

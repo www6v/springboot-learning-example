@@ -3,6 +3,9 @@
 <mapper namespace="org.spring.springboot.dao.RoomStatusDao">
 	<resultMap id="BaseResultMap" type="org.spring.springboot.entity.RoomStatus">
 		<result column="id" property="id" />
+
+		<result column="app_id" property="appId" />
+
 		<result column="room_id" property="roomId" />
 		<result column="user_id" property="userId" />
 		<result column="time" property="time" />
@@ -15,13 +18,13 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		id, room_id, user_id, time, start_time, end_time, room_state, current_user_amount, peek_user_amount, accumulation_user_amount
+		id,app_id, room_id, user_id, time, start_time, end_time, room_state, current_user_amount, peek_user_amount, accumulation_user_amount
 	</sql>
 
 	<select id="findRoomStatusById" resultMap="BaseResultMap" parameterType="java.lang.String">
 		select
 		<include refid="Base_Column_List" />
 		from room_status
-		where room_id = #{roomId}
+		where room_id = #{roomId} and  app_id = #{appId}
 	</select>
 </mapper>

@@ -10,7 +10,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		room_id, user_id, status_type, time
+		app_id, room_id, user_id, status_type, time
 	</sql>
 
 	<!--parameterType="java.lang.String"-->
@@ -20,6 +20,7 @@
 		from user_time
 		where room_id = #{roomId} and  user_id = #{userId} and
 		time >= #{startTime} and   #{endTime} >= time
+		and app_id = #{appId}
 		ORDER BY time
 	</select>
 </mapper>

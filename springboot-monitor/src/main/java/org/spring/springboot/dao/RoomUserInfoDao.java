@@ -5,9 +5,9 @@ import org.spring.springboot.entity.UserInfo;
 import java.util.List;
 
 public interface RoomUserInfoDao {
-    List<UserInfo> findUserInfoById(@Param("roomId") String roomId,
-                                    @Param("userId") String userId,
-                                    Long startTime,
-                                    Long endTime
-    );
+    List<UserInfo> findUserInfoById( String appId,
+                                     String roomId,
+                                     String userId,
+                                     Long startTime,
+                                     Long endTime);
 }

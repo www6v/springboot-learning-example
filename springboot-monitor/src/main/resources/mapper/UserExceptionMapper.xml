@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.UserExceptionDao">
 	<resultMap id="BaseResultMap" type="org.spring.springboot.entity.ExceptionPO">
+
+		<result column="app_id" property="appId" />
+
 		<result column="room_id" property="roomId" />
 		<result column="user_id" property="userId" />
 		<result column="status_type" property="statusType" />
@@ -10,7 +13,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		room_id, user_id, status_type, time, exception_type
+		app_id, room_id, user_id, status_type, time, exception_type
 	</sql>
 
 	<!--parameterType="java.lang.String"-->
@@ -19,7 +22,7 @@
 		<include refid="Base_Column_List" />
 		from user_exception
 		where  room_id= #{roomId} and user_id = #{userId}
-		and time >= #{startTime} and #{endTime} >=  time
+		and time >= #{startTime} and #{endTime} >=  time and  app_id = #{appId}
 		ORDER BY time
 	</select>
 </mapper>

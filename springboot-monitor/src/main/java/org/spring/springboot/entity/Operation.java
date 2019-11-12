@@ -1,6 +1,8 @@
 package org.spring.springboot.entity;
 
 public class Operation {
+    private String appId;
+
     private String roomId;
     private String userId;
     private Integer statusType;
@@ -41,5 +43,13 @@ public class Operation {
     }
     public void setOpertionType(Integer opertionType) {
         this.opertionType = opertionType;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

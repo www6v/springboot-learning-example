@@ -36,8 +36,8 @@ public class UserServiceImpl implements UserService {
 //    }
 
     @Override
-    public List<UserInfo> findUserInfoById(String roomId, String userId, Long startTime, Long endTime) {
-        return roomUserInfoDao.findUserInfoById(roomId, userId, startTime, endTime);
+    public List<UserInfo> findUserInfoById(String appId,String roomId, String userId, Long startTime, Long endTime) {
+        return roomUserInfoDao.findUserInfoById(appId, roomId, userId, startTime, endTime);
     }
 
     @Override
@@ -46,13 +46,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Operation> getUserOperation(String roomId, String userId, Long startTime, Long endTime) {
-        return userOperationDao.getUserOperation(roomId, userId, startTime, endTime);
+    public List<Operation> getUserOperation(String appId, String roomId, String userId, Long startTime, Long endTime) {
+        return userOperationDao.getUserOperation(appId, roomId, userId, startTime, endTime);
     }
 
     @Override
-    public List<ExceptionPO> getUserException(String roomId, String userId, Long startTime, Long endTime) {
-        return userExceptionDao.getUserException(roomId, userId, startTime, endTime );
+    public List<ExceptionPO> getUserException(String appId, String roomId, String userId, Long startTime, Long endTime) {
+        return userExceptionDao.getUserException(appId, roomId, userId, startTime, endTime );
     }
 
 //    @Override

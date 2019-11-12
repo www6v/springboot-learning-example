@@ -2,6 +2,9 @@ package org.spring.springboot.entity;
 
 public class RoomStatus {
     private Integer id;
+
+    private String appId;
+
     private String roomId;
     private String userId;
     private Long time;
@@ -91,5 +94,12 @@ public class RoomStatus {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

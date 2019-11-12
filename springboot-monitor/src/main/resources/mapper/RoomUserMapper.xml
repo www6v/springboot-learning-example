@@ -2,6 +2,9 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="org.spring.springboot.dao.RoomUserDetailDao">
 	<resultMap id="BaseResultMap" type="org.spring.springboot.entity.UserDetail">
+
+		<result column="app_id" property="appId" />
+
 		<result column="user_id" property="userId" />
 		<result column="room_id" property="roomId" />
 		<result column="status_type" property="statusType" />
@@ -18,7 +21,7 @@
 	</resultMap>
 
 	<sql id="Base_Column_List">
-		room_id, user_id, status_type, time, sdkv, agent, device,  system, network, cpu, mem, region
+		app_id, room_id, user_id, status_type, time, sdkv, agent, device,  system, network, cpu, mem, region
 	</sql>
 
 	<!--parameterType="java.lang.String"-->
@@ -28,7 +31,7 @@
 		<include refid="Base_Column_List" />
 		from user_detail
 		where room_id = #{roomId} and
-		time >= #{startTime} and #{endTime} >= time
+		time >= #{startTime} and #{endTime} >= time and  app_id = #{appId}
 		ORDER BY time
 	</select>
 </mapper>

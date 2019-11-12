@@ -2,6 +2,7 @@ package org.spring.springboot.entity;
 
 public class UserDetail {
     private Integer id;
+    private String appId;
     private String userId;
     private String roomId;
     private Integer statusType;
@@ -122,5 +123,12 @@ public class UserDetail {
 
     public int compareTo(UserDetail o2) {
         return this.getTime().compareTo(o2.getTime());
+    }
+
+    public String getAppId() {
+        return appId;
+    }
+    public void setAppId(String appId) {
+        this.appId = appId;
     }
 }

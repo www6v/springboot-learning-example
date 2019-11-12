@@ -11,9 +11,9 @@ import java.util.List;
 public interface UserService {
     List<UserDetail> findRoomUsersById(String appId, String roomId, Long startTime,Long endTime);
 
-    List<UserInfo> findUserInfoById(String roomId, String userId, Long startTime, Long endTime);
+    List<UserInfo> findUserInfoById(String appId, String roomId, String userId, Long startTime, Long endTime);
 
-    List<Operation> getUserOperation(String roomId, String userId, Long startTime, Long endTime);
+    List<Operation> getUserOperation(String appId, String roomId, String userId, Long startTime, Long endTime);
 
-    List<ExceptionPO> getUserException(String roomId, String userId, Long startTime, Long endTime);
+    List<ExceptionPO> getUserException(String appId, String roomId, String userId, Long startTime, Long endTime);
 }
